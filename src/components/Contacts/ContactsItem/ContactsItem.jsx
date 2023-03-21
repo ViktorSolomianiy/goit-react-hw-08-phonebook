@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+
+import { deleteContact } from 'redux/contacts/operations';
 
 import { SpinnerBorder } from 'components/Spinner/Spinner';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const ContactsItems = ({ contact }) => {
   const [isDeletingContact, setIsDeletingContact] = useState(false);
@@ -13,7 +13,7 @@ export const ContactsItems = ({ contact }) => {
   return (
     <>
       <li className="contacts__item">
-        <b>{contact.name}:</b> {contact.phone}
+        <b>{contact.name}:</b> {contact.number}
         <button
           className="contacts__btn"
           type="button"
@@ -31,9 +31,8 @@ export const ContactsItems = ({ contact }) => {
 
 ContactsItems.propTypes = {
   contact: PropTypes.exact({
-    createdAt: PropTypes.string,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
   }),
 };

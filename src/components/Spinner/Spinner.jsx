@@ -1,5 +1,6 @@
 import { MutatingDots } from 'react-loader-spinner';
 import Spinner from 'react-bootstrap/Spinner';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const SpinnerMutatingDots = () => {
   return (

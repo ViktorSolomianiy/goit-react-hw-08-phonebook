@@ -1,20 +1,24 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { selectContacts, selectIsLoading, selectError } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
-import { Toaster } from 'react-hot-toast';
-import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { ContactsForm } from './Contacts/ContactsForm/ContactForm';
-import { Filter } from './Filter/Filter';
-import { ContactsList } from './Contacts/ContactsList/ContactsList/ContactsList';
-import { SpinnerMutatingDots } from './Spinner/Spinner';
+import {
+  selectContacts,
+  selectIsLoading,
+  selectError,
+} from 'redux/contacts/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
 
-export const App = () => {
-  const dispatch = useDispatch();
+import { SpinnerMutatingDots } from 'components/Spinner/Spinner';
+import { ContactsForm } from 'components/Contacts/ContactsForm/ContactForm';
+import { ContactsList } from 'components/Contacts/ContactsList/ContactsList';
+import { Filter } from 'components/Filter/Filter';
+
+export default function Contacts() {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -23,9 +27,7 @@ export const App = () => {
   return (
     <div>
       <h1 className="title">Phonebook</h1>
-
       <ContactsForm />
-
       <div className="contacts__container">
         <h2 className="contacts__title">Contacts</h2>
 
@@ -33,9 +35,8 @@ export const App = () => {
         {isLoading && !error && contacts.length === 0 && (
           <SpinnerMutatingDots />
         )}
-        <ContactsList />
       </div>
-      <Toaster />
+      <ContactsList />
     </div>
   );
-};
+}
