@@ -7,6 +7,7 @@ import {
   selectError,
 } from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
+import './Contacts.css';
 
 import { SpinnerMutatingDots } from 'components/Spinner/Spinner';
 import { ContactsForm } from 'components/Contacts/ContactsForm/ContactForm';
@@ -25,7 +26,7 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="phonebook-container">
       <h1 className="title">Phonebook</h1>
       <ContactsForm />
       <div className="contacts__container">

@@ -1,0 +1,11 @@
+.home-container {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-title {
+  font-family: sans-serif;
+  font-size: 50px;
+}
