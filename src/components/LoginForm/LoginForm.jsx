@@ -1,8 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+
 import './LoginForm.css';
 
 import { TextField, Button } from '@mui/material';
+import { toast } from 'react-toastify';
+import { options } from 'utils/optionsToastStyled';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -10,6 +13,12 @@ export const LoginForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target.elements;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (email.trim() === '' || password.trim() === '') {
+      return toast.warn('Please fill in all fields!', options);
+    }
 
     dispatch(
       logIn({
@@ -28,9 +37,9 @@ export const LoginForm = () => {
         id="outlined-basic"
         variant="outlined"
         // Styles
-        size="small"
+        size="medium"
         color="warning"
-        sx={{ width: '300px' }}
+        sx={{ width: '400px' }}
       />
       <TextField
         label="Password"
@@ -39,16 +48,16 @@ export const LoginForm = () => {
         id="outlined-basic"
         variant="outlined"
         // Styles
-        size="small"
+        size="medium"
         color="warning"
-        sx={{ width: '300px' }}
+        sx={{ width: '400px' }}
       />
       <Button
         type="submit"
         variant="outlined"
         color="warning"
         size="large"
-        sx={{ width: '120px', height: '35px' }}
+        sx={{ width: '200px', height: '50px' }}
         pt={4}
       >
         Log In

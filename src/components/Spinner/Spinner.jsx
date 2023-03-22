@@ -7,8 +7,8 @@ export const SpinnerMutatingDots = () => {
     <MutatingDots
       height="100"
       width="100"
-      color="#00aeff"
-      secondaryColor="#00aeff"
+      color="#ff9900"
+      secondaryColor="#ff9900"
       radius="12.5"
       ariaLabel="mutating-dots-loading"
       wrapperStyle={{}}

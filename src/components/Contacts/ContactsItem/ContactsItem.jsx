@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import './ContactsItem.css';
 
 import { deleteContact } from 'redux/contacts/operations';
 
 import { SpinnerBorder } from 'components/Spinner/Spinner';
+import { Button } from '@mui/material';
 
 export const ContactsItems = ({ contact }) => {
   const [isDeletingContact, setIsDeletingContact] = useState(false);
@@ -13,17 +15,23 @@ export const ContactsItems = ({ contact }) => {
   return (
     <>
       <li className="contacts__item">
-        <b>{contact.name}:</b> {contact.number}
-        <button
-          className="contacts__btn"
-          type="button"
+        <p className="contacts__text">
+          <b>{contact.name}:</b> {contact.number}
+        </p>
+
+        <Button
           onClick={() => {
             setIsDeletingContact(true);
             dispatch(deleteContact(contact.id));
           }}
+          type="button"
+          variant="outlined"
+          color="warning"
+          size="large"
+          sx={{ width: '120px', height: '35px' }}
         >
           {isDeletingContact ? <SpinnerBorder /> : 'Delete'}
-        </button>
+        </Button>
       </li>
     </>
   );

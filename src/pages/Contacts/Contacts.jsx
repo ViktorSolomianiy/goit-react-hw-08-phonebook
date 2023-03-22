@@ -27,17 +27,18 @@ export default function Contacts() {
 
   return (
     <div className="phonebook-container">
-      <h1 className="title">Phonebook</h1>
+      <h1 className="phonebook-title">Phonebook</h1>
       <ContactsForm />
-      <div className="contacts__container">
-        <h2 className="contacts__title">Contacts</h2>
 
-        {contacts.length !== 0 && <Filter />}
-        {isLoading && !error && contacts.length === 0 && (
-          <SpinnerMutatingDots />
-        )}
-      </div>
-      <ContactsList />
+      {contacts.length !== 0 && (
+        <div className="contacts__container">
+          <h2 className="contacts__title">Contacts</h2>
+
+          <Filter />
+          <ContactsList />
+        </div>
+      )}
+      {isLoading && !error && contacts.length === 0 && <SpinnerMutatingDots />}
     </div>
   );
 }

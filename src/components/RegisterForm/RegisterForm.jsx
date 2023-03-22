@@ -3,6 +3,8 @@ import { register } from 'redux/auth/operations';
 import './RegisterForm.css';
 
 import { TextField, Button } from '@mui/material';
+import { toast } from 'react-toastify';
+import { options } from 'utils/optionsToastStyled';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -10,6 +12,13 @@ export const RegisterForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target.elements;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (email.trim() === '' || password.trim() === '' || name.trim() === '') {
+      return toast.warn('Please fill in all fields!', options);
+    }
 
     dispatch(
       register({
@@ -29,9 +38,9 @@ export const RegisterForm = () => {
         id="outlined-basic"
         variant="outlined"
         // Styles
-        size="small"
+        size="medium"
         color="warning"
-        sx={{ width: '300px' }}
+        sx={{ width: '400px' }}
       />
       <TextField
         label="Email"
@@ -40,9 +49,9 @@ export const RegisterForm = () => {
         id="outlined-basic"
         variant="outlined"
         // Styles
-        size="small"
+        size="medium"
         color="warning"
-        sx={{ width: '300px' }}
+        sx={{ width: '400px' }}
       />
       <TextField
         label="Password"
@@ -51,16 +60,16 @@ export const RegisterForm = () => {
         id="outlined-basic"
         variant="outlined"
         // Styles
-        size="small"
+        size="medium"
         color="warning"
-        sx={{ width: '300px' }}
+        sx={{ width: '400px' }}
       />
       <Button
         type="submit"
         variant="outlined"
         color="warning"
         size="large"
-        sx={{ width: '120px', height: '35px' }}
+        sx={{ width: '200px', height: '50px' }}
         pt={4}
       >
         Register

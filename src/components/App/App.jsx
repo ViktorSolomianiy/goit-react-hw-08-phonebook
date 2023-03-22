@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { useEffect, lazy } from 'react';
-import './App.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
@@ -55,7 +55,7 @@ export const App = () => {
         </Routes>
       )}
 
-      <Toaster />
+      <ToastContainer limit={3} autoClose={3000} />
     </div>
   );
 };
